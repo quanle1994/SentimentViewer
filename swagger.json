@@ -1,0 +1,171 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Qoodie API",
+    "description": "Backend API Swagger Doc"
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:3000",
+  "paths": {
+    "/signup": {
+      "post": {
+        "summary": "Sign up a new user",
+        "operationId": "signupUser",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "The user to sign up",
+            "schema": {
+              "$ref": "#/definitions/userSignup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully signed up",
+            "schema": {
+              "$ref": "#/definitions/userSignup"
+            }
+          },
+          "400": {
+            "description": "User failed to sign up"
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "summary": "Sign in a user and generate an auth token",
+        "operationId": "signinUser",
+        "parameters": [
+          {
+            "name": "userSignin",
+            "in": "body",
+            "description": "sign in with email and password",
+            "schema": {
+              "$ref": "#/definitions/userSignin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully signed in",
+            "schema": {
+              "$ref": "#/definitions/userSigninResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/signout": {
+      "delete": {
+        "summary": "Sign out a user and remove user's auth token",
+        "operationId": "signoutUser",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-auth",
+            "schema": {
+              "type": "string",
+              "required": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User signed out",
+            "schema": {
+              "$ref": "#/definitions/userSigninResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "userSignup": {
+      "type": "object",
+      "required": [
+        "name",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "minimum": 1
+        },
+        "phone": {
+          "type": "string",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/userSignup"
+      }
+    },
+    "userSigninResponse": {
+      "type": "object",
+      "required": [
+        "name",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "minimum": 1
+        },
+        "phone": {
+          "type": "string",
+          "minimum": 1
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/userSigninResponse"
+      }
+    },
+    "userSignin": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/userSignin"
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#header {
+    height: 10vh;
+    text-align: center;
+    background-color: #FFC400;
+    color: #263238;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.icon-wrapper {
+    height: 10vh;
+    margin: -10px;
+    width: 100px;
+    font-size: 40px
+}
+
+.icon-wrapper:hover {
+    cursor: pointer;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+#map, #chart {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#viewer{
+    min-width: 70vw;
+}
+
+#list-wrapper {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+mark, .user-name {
+    color: #0D47A1;
+    background-color: transparent;
+}
+
+mark:hover, .user-name {
+    cursor: pointer;
+    color: #1976D2;
+    text-decoration-line: underline;
+}
+
+.senti {
+    text-align: center;
+    margin: 10px auto 0px auto;
+    width: 80%;
+    padding: 5px;
+    background-color: #81D4FA;
+    border-radius: 4px;
+}
+
+.user-name {
+    height: 35px;
+    font-weight: 500;
+    font-size: larger;
+}
+
+.date {
+    padding-bottom: 5px;
+    font-style: italic;
+    font-size: smaller;
+}
+
+.card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-content {
+    padding-left: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-group-item {
+    padding: 0;
+}
+
+.card {
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    margin: 5px 0px;
+    position: relative;
+}
+
+.tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    text-align: center;
+    padding: 3px 0px 8px 0px;
+    border-bottom-left-radius: 4px;
+}
+
+.tag-neg {
+    background-color: #FFAB91;
+}
+
+.tag-neu {
+    background-color: #FFF59D;
+}
+
+.tag-pos {
+    background-color: #80CBC4;
+}
+
+.arc text {
+    text-anchor: middle;
+}
+
+.arc path {
+    stroke: white;
+}
+
+@media (min-width: 768px) {
+    .icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    #donut-chart {
+        /*transform:scale(0.7) translate(500, 500);*/
+        -webkit-transform:scale(0.7) translate(265px, 230px);
+    }
+}
