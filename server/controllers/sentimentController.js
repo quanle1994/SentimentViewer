@@ -1,16 +1,24 @@
 import Sentiment from "../models/sentiment";
 
 const sentiments = require('../../sentimentdata.json').map(j => new Sentiment(j));
-const donutData = {
+let donutData = {
     negative: 0,
     positive: 0,
     neutral: 0,
 };
-const lineData = {};
-const sentimentsByCoord = {};
+let lineData = {};
+let sentimentsByCoord = {};
 
 const getSentiments = async (req, res) => {
     const seen = {};
+    donutData = {
+        negative: 0,
+        positive: 0,
+        neutral: 0,
+    };
+    lineData = {};
+    sentimentsByCoord = {};
+    console.log(Object.keys(sentiments).length)
     const points = sentiments.map(s => {
         donutData[s.properties.labelledSentiment] = donutData[s.properties.labelledSentiment] + 1;
         const date = new Date(s.properties.year, s.properties.month, s.properties.day);

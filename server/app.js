@@ -19,7 +19,7 @@ app.listen(process.env.NODE_PORT, () => {
     console.log(`Started on port ${process.env.NODE_PORT}`);
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // export app for testing
 module.exports = {
