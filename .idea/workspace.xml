@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67de125b-8da6-4e0d-a8db-13d1f287da76" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/sentimentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sentimentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/resources/img/desktopView.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/resources/img/phoneView.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.yml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -78,7 +70,7 @@
           <entry key="html" value="841" />
           <entry key="js" value="11034" />
           <entry key="json" value="17" />
-          <entry key="md" value="2012" />
+          <entry key="md" value="2122" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -88,7 +80,7 @@
           <entry key="HTML" value="843" />
           <entry key="JSON" value="17" />
           <entry key="JavaScript" value="11031" />
-          <entry key="Markdown" value="2012" />
+          <entry key="Markdown" value="2122" />
           <entry key="PLAIN_TEXT" value="10" />
         </counts>
       </usages-collector>
@@ -126,8 +118,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="493">
-                <caret line="29" column="89" selection-start-line="29" selection-start-column="89" selection-end-line="29" selection-end-column="89" />
+              <first_editor relative-caret-position="578">
+                <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               </first_editor>
               <second_editor />
             </state>
@@ -376,12 +368,12 @@
       <updated>1548140907925</updated>
       <workItem from="1548140909451" duration="702000" />
       <workItem from="1548145127420" duration="54704000" />
-      <workItem from="1548233341932" duration="1874000" />
+      <workItem from="1548233341932" duration="2133000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60542000" />
+    <option name="totallyTimeSpent" value="60801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -555,8 +547,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="493">
-            <caret line="29" column="89" selection-start-line="29" selection-start-column="89" selection-end-line="29" selection-end-column="89" />
+          <first_editor relative-caret-position="578">
+            <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           </first_editor>
           <second_editor />
         </state>
