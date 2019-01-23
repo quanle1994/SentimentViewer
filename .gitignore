@@ -9,3 +9,5 @@ node_modules/
 
 # some redundent setting for node.js
 package-lock.json
+
+*.mp4
