@@ -18,7 +18,6 @@ const getSentiments = async (req, res) => {
     };
     lineData = {};
     sentimentsByCoord = {};
-    console.log(Object.keys(sentiments).length)
     const points = sentiments.map(s => {
         donutData[s.properties.labelledSentiment] = donutData[s.properties.labelledSentiment] + 1;
         const date = new Date(s.properties.year, s.properties.month, s.properties.day);
