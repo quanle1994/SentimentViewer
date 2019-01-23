@@ -132,10 +132,60 @@ mark:hover, .user-name {
     stroke: white;
 }
 
+#path-positive {
+    stroke: #26A69A;
+}
+
+#path-neutral {
+    stroke: #FFEE58;
+}
+
+#path-negative {
+    stroke: #FF7043;
+}
+
+#chart {
+    background: url('img/background.jpg');
+    overflow-x: hidden;
+}
+
+.dot {
+    fill: wheat;
+    stroke-width: 2px;
+}
+
+.dot:hover {
+    cursor: pointer;
+}
+
+.dot-pos {
+    stroke: #26A69A;
+}
+
+.dot-neu {
+    stroke: #827717;
+}
+
+.dot-neg {
+    stroke: #FF7043;
+}
+
+.label {
+    font-size: 13px;
+}
+
 @media (min-width: 768px) {
     .icon {
-        width: 80px;
+        width: 87px;
         height: 80px;
+    }
+
+    #chart-wrapper {
+        display: flex;
+    }
+
+    #svg-line {
+        width: 1000px;
     }
 }
 
@@ -148,5 +198,14 @@ mark:hover, .user-name {
     #donut-chart {
         /*transform:scale(0.7) translate(500, 500);*/
         -webkit-transform:scale(0.7) translate(265px, 230px);
+    }
+
+    #line-chart {
+        -webkit-transform:scale(0.9) translate(50px, 50px);
+    }
+
+    #svg-line {
+        width: 100%;
+        overflow-x: auto;
     }
 }

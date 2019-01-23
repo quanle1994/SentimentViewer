@@ -14,3 +14,6 @@ const getSentiment = (id) => api
 
 const getDonutData = () => api
     .get('/getDonutData');
+
+const getLineData = () => api
+    .get('/getLineData');

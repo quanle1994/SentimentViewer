@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     function urlify(text) {
         var urlRegex = /(https?:\/\/[^\s]+)/g;
-        return text.replace(urlRegex, function(url) {
+        return text.replace(urlRegex, function (url) {
             return '<a href="' + url + '" target="_blank">' + url + '</a>';
         })
     }
@@ -128,17 +128,140 @@ $(document).ready(function () {
                 .text((d) => d.data.sentiment + ' (' + addThousandSeparator(d.data.count) + ')');
         });
 
+        $('#chart-wrapper').append('<div id="svg-line"></div>')
+
+        const svgLine = d3.select('#chart-wrapper #svg-line').append('svg')
+            .attr('width', 1000)
+            .attr('height', 600)
+            .append('g')
+            .attr('id', 'line-chart')
+            .attr('transform', 'translate(50, 50)');
+
+        const gLine = svgLine.append('g');
+
+        const x = d3.scaleTime()
+            .rangeRound([0, 800]);
+
+        const y = d3.scaleLinear()
+            .rangeRound([450, 0]);
+
+        getLineData().then(res => {
+            const chartData = res.data;
+            const chData = Object.keys(chartData).map(label => {
+                const cData = Object.keys(chartData[label]).map(time => ({
+                    date: new Date(time),
+                    value: chartData[label][time],
+                }));
+                return cData;
+            });
+            const line = d3.line()
+                .x((d) => x(d.date))
+                .y((d) => y(d.value));
+            const master = [];
+            chData.forEach((d, index) => {
+                d.sort((d1, d2) => d1.date > d2.date ? 1 : d1.date === d2.date ? 0 : -1);
+                const newD = d.map(d => ({
+                    ...d,
+                    sent: index === 0 ? 'pos' : index === 1 ? 'neg' : 'neu',
+                }));
+                master.push(...newD)
+            });
+            console.log(master);
+            master.sort((d1, d2) => d1.date > d2.date ? 1 : d1.date === d2.date ? 0 : -1);
+            x.domain(d3.extent(master, (d) => d.date));
+            y.domain(d3.extent(master, (d) => d.value));
+            gLine.append('path')
+                .datum(chData[0])
+                .attr('id', 'path-positive')
+                .attr('fill', 'none')
+                .attr('stroke-linejoin', 'round')
+                .attr('stroke-linecap', 'round')
+                .attr('stroke-width', 1.5)
+                .attr('d', line);
+            gLine.selectAll('circle')
+                .data(master)
+                .enter()
+                .append("circle")
+                .on('mouseover', handleMouseOver)
+                .on("mouseout", handleMouseOut)
+                .attr("class", (d) => "dot dot-" + d.sent)
+                .attr("cx", function (d) {
+                    return x(d.date);
+                })
+                .attr("cy", function (d) {
+                    return y(d.value);
+                })
+                .attr("r", 7);
+            gLine.append('text')
+                .text('Positive')
+                .attr('fill', '#26A69A')
+                .attr('transform', 'translate(820, 230)');
+            gLine.append('text')
+                .text('Negative')
+                .attr('fill', '#FF7043')
+                .attr('transform', 'translate(820, 410)');
+            gLine.append('text')
+                .text('Neutral')
+                .attr('fill', '#827717')
+                .attr('transform', 'translate(820, 440)');
+            gLine.append('path')
+                .datum(chData[1])
+                .attr('id', 'path-negative')
+                .attr('fill', 'none')
+                .attr('stroke-linejoin', 'round')
+                .attr('stroke-linecap', 'round')
+                .attr('stroke-width', 1.5)
+                .attr('d', line);
+
+            gLine.append('path')
+                .datum(chData[2])
+                .attr('id', 'path-neutral')
+                .attr('fill', 'none')
+                .attr('stroke-linejoin', 'round')
+                .attr('stroke-linecap', 'round')
+                .attr('stroke-width', 1.5)
+                .attr('d', line);
+
+            gLine.append('g')
+                .attr('transform', 'translate(0, 450)')
+                .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %d")));
+
+            gLine.append('g')
+                .classed('y-axis', true)
+                .call(d3.axisLeft(y))
+                .append('text')
+                .attr('fill', '#000')
+                .attr('transform', 'rotate(-90)')
+                .attr('y', 6)
+                .attr('dy', '0.8em')
+                .attr('text-anchor', 'end')
+                .text('Count');
+        });
+
+        const handleMouseOver = (d, i) => {
+            gLine.append("text").text(addThousandSeparator(d.value))
+                .attr('class', 'label')
+                .attr('id', "t" + d3.timeFormat("%b-%d")(d.date) + "-" + d.value + "-" + i)
+                .attr('x', x(d.date) - 20)
+                .attr('y', y(d.value) - 15);
+        };
+
+        const handleMouseOut = (d, i) => {
+            // Select text by id and then remove
+            d3.select("#t" + d3.timeFormat("%b-%d")(d.date) + "-" + d.value + "-" + i).remove();  // Remove text location
+        };
+
         const addThousandSeparator = (nStr) => {
             nStr += '';
-            var x = nStr.split('.');
-            var x1 = x[0];
-            var x2 = x.length > 1 ? '.' + x[1] : '';
-            var rgx = /(\d+)(\d{3})/;
+            const x = nStr.split('.');
+            let x1 = x[0];
+            const x2 = x.length > 1 ? '.' + x[1] : '';
+            const rgx = /(\d+)(\d{3})/;
             while (rgx.test(x1)) {
                 x1 = x1.replace(rgx, '$1' + ',' + '$2');
             }
             return x1 + x2;
-        }
+        };
 
         const pieTween = (b) => {
             b.innerRadius = 0;

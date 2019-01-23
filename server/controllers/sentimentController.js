@@ -13,16 +13,14 @@ const getSentiments = async (req, res) => {
     const seen = {};
     const points = sentiments.map(s => {
         donutData[s.properties.labelledSentiment] = donutData[s.properties.labelledSentiment] + 1;
-        const date = new Date(s.properties.year, s.properties.month, s.properties.day, s.properties.hour);
-        let obj = lineData[date.toLocaleString()];
+        const date = new Date(s.properties.year, s.properties.month, s.properties.day);
+        let obj = lineData[s.properties.labelledSentiment];
         if (obj === undefined)
-            obj = {
-                negative: 0,
-                positive: 0,
-                neutral: 0,
-            };
-        obj[s.properties.labelledSentiment] = obj[s.properties.labelledSentiment] + 1;
-        lineData[date.toLocaleString] = obj;
+            obj = {[date.toLocaleString()] : 0};
+        if (obj[date.toLocaleString()] === undefined)
+            obj[date.toLocaleString()] = 0;
+        obj[date.toLocaleString()] = obj[date.toLocaleString()] + 1;
+        lineData[s.properties.labelledSentiment] = obj;
         return s.coordinate.coordinates;
     }).filter(item => seen
         .hasOwnProperty(item.toLocaleString()) ? false : (seen[item.toLocaleString()] = true));
@@ -49,7 +47,6 @@ const getSentiment = async (req, res) => {
 };
 
 const getDonutData = async (req, res) => {
-    console.log(donutData);
     res.send(donutData);
 };
 
