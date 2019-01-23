@@ -68,7 +68,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1418" />
+          <entry key="css" value="1444" />
           <entry key="env" value="39" />
           <entry key="html" value="827" />
           <entry key="js" value="10979" />
@@ -78,7 +78,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="39" />
-          <entry key="CSS" value="1419" />
+          <entry key="CSS" value="1445" />
           <entry key="HTML" value="829" />
           <entry key="JSON" value="17" />
           <entry key="JavaScript" value="10976" />
@@ -86,7 +86,7 @@
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -110,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/resources/stylesheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="186" column="22" selection-start-line="186" selection-start-column="22" selection-end-line="186" selection-end-column="22" />
+            <state relative-caret-position="49">
+              <caret line="148" column="23" selection-start-line="148" selection-start-column="23" selection-end-line="148" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -377,12 +377,12 @@
       <option name="presentableId" value="Default" />
       <updated>1548140907925</updated>
       <workItem from="1548140909451" duration="702000" />
-      <workItem from="1548145127420" duration="54291000" />
+      <workItem from="1548145127420" duration="54704000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58255000" />
+    <option name="totallyTimeSpent" value="58668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -594,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/resources/stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="186" column="22" selection-start-line="186" selection-start-column="22" selection-end-line="186" selection-end-column="22" />
+        <state relative-caret-position="49">
+          <caret line="148" column="23" selection-start-line="148" selection-start-column="23" selection-end-line="148" selection-end-column="23" />
         </state>
       </provider>
     </entry>
